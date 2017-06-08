@@ -3,122 +3,115 @@
 <html lang="en-us">
 
 <head>
-<meta charset="utf-8">
-<title>Hello...</title>
-<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
-<style type="text/css">
-#mainContent {
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: xx-large;
-	font-weight: bold;
-	background-color: #E3F0FB;
-	border-radius: 4px;
-	padding: 10px;
-	text-align: center;
-}
-.buttonStyle {
-	border-radius: 4px;
-	border: thin solid #F0E020;
-	padding: 5px;
-	background-color: #F8F094;
-	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-	font-weight: bold;
-	color: #663300;
-	width: 75px;
-}
+	<meta charset="utf-8">
+	<title>Hello...</title>
+	<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+	<style type="text/css">
+	#mainContent {
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: xx-large;
+		font-weight: bold;
+		background-color: #E3F0FB;
+		border-radius: 4px;
+		padding: 10px;
+		text-align: center;
+	}
+	.buttonStyle {
+		border-radius: 4px;
+		border: thin solid #F0E020;
+		padding: 5px;
+		background-color: #F8F094;
+		font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+		font-weight: bold;
+		color: #663300;
+		width: 75px;
+	}
 
-.buttonStyle:hover {
-	border: thin solid #FFCC00;
-	background-color: #FCF9D6;
-	color: #996633;
-	cursor: pointer;
-}
-.buttonStyle:active {
-	border: thin solid #99CC00;
-	background-color: #F5FFD2;
-	color: #669900;
-	cursor: pointer;
-}
+	.buttonStyle:hover {
+		border: thin solid #FFCC00;
+		background-color: #FCF9D6;
+		color: #996633;
+		cursor: pointer;
+	}
+	.buttonStyle:active {
+		border: thin solid #99CC00;
+		background-color: #F5FFD2;
+		color: #669900;
+		cursor: pointer;
+	}
 
-</style>
+	</style>
 </head>
 
 <body>
-<table id="myTable">
-    <thead>
-        <tr>
-            <th>created</th>
-            <th>updated</th>
-            <th>id</th>
-            <th>call_id</th>
-            <th>calling_party_number</th>
-            <th>dialed_party_number</th>
-			<th>end_time</th>
-            <th>event_id</th>
-            <th>calling_party_number</th>
-            <th>start_time</th>
-        </tr>
-    </thead>
-	<tfoot>
-        <tr>
-			<th>created</th>
-            <th>updated</th>
-            <th>id</th>
-            <th>call_id</th>
-            <th>calling_party_number</th>
-            <th>dialed_party_number</th>
-			<th>end_time</th>
-            <th>event_id</th>
-            <th>calling_party_number</th>
-            <th>start_time</th>
-        </tr>
-    </tfoot>
-    <tbody>
-    </tbody>
-</table>
-<script
-  src="https://code.jquery.com/jquery-3.2.1.min.js"
-  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
-<script src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-<script>
-/* global $ */
-/**
- * $ is the shortcut for jQuery. It binds itself to the global $.
- * This is an artifact from the old days of JavaScript with 1 global namespace and no modules.
- * Never bind to global
- **/
+	<table id="myTable">
+		<thead>
+			<tr>
+				<th>created</th>
+				<th>updated</th>
+				<th>id</th>
+				<th>call_id</th>
+				<th>calling_party_number</th>
+				<th>dialed_party_number</th>
+				<th>end_time</th>
+				<th>event_id</th>
+				<th>calling_party_number</th>
+				<th>start_time</th>
+			</tr>
+		</thead>
+		<tfoot>
+			<tr>
+				<th>created</th>
+				<th>updated</th>
+				<th>id</th>
+				<th>call_id</th>
+				<th>calling_party_number</th>
+				<th>dialed_party_number</th>
+				<th>end_time</th>
+				<th>event_id</th>
+				<th>calling_party_number</th>
+				<th>start_time</th>
+			</tr>
+		</tfoot>
+		<tbody>
+		</tbody>
+	</table>
+	<script
+	src="https://code.jquery.com/jquery-3.2.1.min.js"
+	integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+	crossorigin="anonymous"></script>
+	<script src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+	<script>
+	/* global $ */
+	/**
+	* $ is the shortcut for jQuery. It binds itself to the global $.
+	* This is an artifact from the old days of JavaScript with 1 global namespace and no modules.
+	* Never bind to global
+	**/
 
-$(document).ready(function(){
-    $('#myTable').DataTable({
-		"bProcessing": true,
-    	"bServerSide": true,
-		"ajax": {
-			"url": "/api",
-			"data": "{}",
-	        "contentType": "application/json; charset=utf-8",
-	        "dataType": "json"
-		},
-		// "columns": [
-        //     { "data": "created" },
-        //     { "data": "updated" },
-        //     { "data": "id" },
-        //     { "data": "call_id" },
-        //     { "data": "calling_party_number" },
-        //     { "data": "dialed_party_number" },
-		// 	{ "data": "end_time" },
-		// 	{ "data": "event_id" },
-		// 	{ "data": "event_type" },
-		// 	{ "data": "start_time" }
-        // ],
-		// success : function () {
-        // 	alert("worked");
-        // },
-        // error : function () {
-        //     alert("Error Ajax");
-        // }
-    });
-});
-</script>
+	$(function(){
+		var oTable = $('#myTable').DataTable({
+			"bProcessing": true,
+			"bServerSide": true,
+			"sAjaxSource": "/api",
+			"sPaginationType": "full_numbers",
+			"aoColumns": [
+				{ "mDataProp": 'created' },
+				{ "mDataProp": "updated" },
+				{ "mDataProp": "id" },
+				{ "mDataProp": "call_id" },
+				{ "mDataProp": "calling_party_number" },
+				{ "mDataProp": "dialed_party_number" },
+				{ "mDataProp": "end_time" },
+				{ "mDataProp": "event_id" },
+				{ "mDataProp": "event_type" },
+				{ "mDataProp": "start_time" }
+			],
+			error : function () {
+			    alert("Error Ajax");
+			}
+		});
+	});
+	</script>
 </body>
 </html>
