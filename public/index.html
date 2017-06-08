@@ -4,7 +4,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>Hello...</title>
+	<title>FALCON BITCHES</title>
 	<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
 	<style type="text/css">
 	#mainContent {
@@ -90,10 +90,11 @@
 	**/
 
 	$(function(){
-		var oTable = $('#myTable').DataTable({
+		$('#myTable').DataTable({
 			"bProcessing": true,
 			"bServerSide": true,
 			"sAjaxSource": "/api",
+			"bPaginate": true,
 			"sPaginationType": "full_numbers",
 			"aoColumns": [
 				{ "mDataProp": 'created' },

@@ -124,7 +124,7 @@ var data = {
 
 app.get('/api', function (req, res) {
   console.log("Got response: " + res.statusCode);
-  var url = "http://localhost:5000/df/1";
+  var url = "http://localhost:5000/df/" + 1;
   console.log(url);
 
   request(url, function(err, resp, body) {
