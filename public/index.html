@@ -44,38 +44,36 @@
 </head>
 
 <body>
-	<table id="myTable">
-		<thead>
-			<tr>
-				<th>created</th>
-				<th>updated</th>
-				<th>id</th>
-				<th>call_id</th>
-				<th>calling_party_number</th>
-				<th>dialed_party_number</th>
-				<th>end_time</th>
-				<th>event_id</th>
-				<th>calling_party_number</th>
-				<th>start_time</th>
-			</tr>
-		</thead>
-		<tfoot>
-			<tr>
-				<th>created</th>
-				<th>updated</th>
-				<th>id</th>
-				<th>call_id</th>
-				<th>calling_party_number</th>
-				<th>dialed_party_number</th>
-				<th>end_time</th>
-				<th>event_id</th>
-				<th>calling_party_number</th>
-				<th>start_time</th>
-			</tr>
-		</tfoot>
-		<tbody>
-		</tbody>
-	</table>
+	<table id="myTable" class="display" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+							<th>created</th>
+							<th>updated</th>
+							<th>id</th>
+							<th>call_id</th>
+							<th>calling_party_number</th>
+							<th>dialed_party_number</th>
+							<th>end_time</th>
+							<th>event_id</th>
+							<th>calling_party_number</th>
+							<th>start_time</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+							<th>created</th>
+							<th>updated</th>
+							<th>id</th>
+							<th>call_id</th>
+							<th>calling_party_number</th>
+							<th>dialed_party_number</th>
+							<th>end_time</th>
+							<th>event_id</th>
+							<th>calling_party_number</th>
+							<th>start_time</th>
+            </tr>
+        </tfoot>
+    </table>
 	<script
 	src="https://code.jquery.com/jquery-3.2.1.min.js"
 	integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
@@ -89,10 +87,12 @@
 	* Never bind to global
 	**/
 
-
-	$(function(){
-		$('#myTable').DataTable({
+	// http://legacy.datatables.net/usage/server-side
+	$(document).ready(function(){
+		var oTable = $('#myTable').DataTable({
 			"bProcessing": true,
+			"bInfo": true,
+			// "bJQueryUI": true,
 			"bServerSide": true,
 			"sAjaxSource": "/api",
 			"bPaginate": true,
@@ -108,11 +108,13 @@
 				{ "mDataProp": "event_id" },
 				{ "mDataProp": "event_type" },
 				{ "mDataProp": "start_time" }
-			],
-			error : function () {
-			    alert("Error Ajax");
-			}
+			]
 		});
+
+		$('#myTable').on('click', 'tr', function () {
+        var data = table.row( this ).data();
+        alert( 'You clicked on ' + data[0] + '\'s row' );
+    } );
 	});
 	</script>
 </body>
